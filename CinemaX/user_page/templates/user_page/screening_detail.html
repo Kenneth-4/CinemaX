@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>{{ screening.movie.title }} - {{ screening.start_time }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+        body { font-family: system-ui, Arial, sans-serif; margin: 24px; }
+        form { display: grid; gap: 12px; max-width: 360px; }
+        input, button { padding: 10px; font-size: 16px; }
+        .error { color: #b91c1c; }
+        a { color: #2563eb; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <p><a href="{% url 'movie_list' %}">← Back to movies</a></p>
+    <h1>{{ screening.movie.title }}</h1>
+    <p><strong>When:</strong> {{ screening.start_time }} | <strong>Hall:</strong> {{ screening.hall_name }}</p>
+    <p><strong>Seats available:</strong> {{ screening.available_seats }} / {{ screening.total_seats }}</p>
+
+    {% if errors %}
+        <div class="error">
+            {% for field, msgs in errors.items %}
+                {% for m in msgs %}
+                    <div>{{ m }}</div>
+                {% endfor %}
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    {% if screening.available_seats > 0 %}
+    <form method="post" action="{% url 'create_booking' screening.id %}">
+        {% csrf_token %}
+        <label>
+            Name
+            <input type="text" name="name" required />
+        </label>
+        <label>
+            Email
+            <input type="email" name="email" required />
+        </label>
+        <label>
+            Number of seats
+            <input type="number" name="num_seats" min="1" max="{{ screening.available_seats }}" required />
+        </label>
+        <button type="submit">Book seats</button>
+    </form>
+    {% else %}
+        <p><strong>Sold out.</strong></p>
+    {% endif %}
+</body>
+</html>
+
+
