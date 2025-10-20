@@ -1,5 +1,5 @@
 """
-WSGI config for cinema_ticket project.
+WSGI config for CinemaX project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'cinema_ticket.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'CinemaX.settings')
 
 application = get_wsgi_application()
