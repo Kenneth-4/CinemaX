@@ -74,6 +74,19 @@ export default function Home() {
 
       {/* Main Content */}
       <main className="container mx-auto px-6 py-12">
+        {/* Hero */}
+        <section className="min-h-screen flex flex-col items-center justify-center text-center mb-16">
+          <div className="flex items-center justify-center gap-4 mb-4">
+            <div className="w-14 h-14 md:w-16 md:h-16 bg-gradient-to-br from-red-600 to-red-700 rounded-xl flex items-center justify-center">
+              <span className="text-white font-extrabold text-2xl md:text-3xl">C</span>
+            </div>
+            <h1 className="text-6xl md:text-8xl font-extrabold tracking-tight text-white">Cinemax</h1>
+          </div>
+          <p className="text-gray-300 text-xl md:text-2xl max-w-3xl mx-auto">
+            Lights. Camera. Thrill. Experience movies the way they were meant to be.
+          </p>
+        </section>
+
         <div className="mb-12 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Now Showing
